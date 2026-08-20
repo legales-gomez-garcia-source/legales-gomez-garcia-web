@@ -179,6 +179,32 @@ a{color:inherit}
 .btn:active{transform:translateY(1px)}
 :focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:2px}
 
+/* ---------- Trayectoria ---------- */
+.stats{display:flex;flex-wrap:wrap;margin-top:38px;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{flex:1 1 150px;padding:22px 26px 22px 0}
+.stat b{display:block;font-family:var(--font-display);font-size:2.1rem;line-height:1;
+  color:var(--brand);font-weight:600;letter-spacing:-.02em}
+.stat span{display:block;margin-top:8px;font-size:.72rem;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muted);font-weight:600}
+
+.clientes{margin-top:38px;display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(215px,1fr));
+  border-top:1px solid var(--line-soft);border-left:1px solid var(--line-soft)}
+.cliente{padding:17px 18px;min-height:82px;display:flex;flex-direction:column;
+  justify-content:center;gap:5px;
+  border-bottom:1px solid var(--line-soft);border-right:1px solid var(--line-soft);
+  transition:background .18s}
+.cliente:hover{background:var(--surface-2)}
+.cliente b{font-size:.9rem;font-weight:600;line-height:1.28;color:var(--ink)}
+.cliente span{font-size:.72rem;color:var(--muted);letter-spacing:.02em}
+@media (max-width:420px){.clientes{grid-template-columns:1fr}}
+
+.trayecto-notas{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:34px}
+@media (max-width:760px){.trayecto-notas{grid-template-columns:1fr;gap:26px}}
+.trayecto-notas h3{font-family:var(--font-display);font-size:1.06rem;font-weight:600;
+  margin:0 0 8px;letter-spacing:-.005em}
+.trayecto-notas p{margin:0;color:var(--ink-2);font-size:.94rem;line-height:1.66}
 /* ---------- Hero ---------- */
 .hero{padding:96px 0 84px}
 @media (max-width:760px){.hero{padding:64px 0 56px}}
@@ -224,6 +250,7 @@ a{color:inherit}
 @media (max-width:760px){.areas{grid-template-columns:1fr;gap:0}}
 .area{padding:24px 0;border-top:1px solid var(--line-soft)}
 .area:first-child,.areas>.area:nth-child(2){border-top:0}
+.area.wide{grid-column:1/-1}
 @media (max-width:760px){.areas>.area:nth-child(2){border-top:1px solid var(--line-soft)}}
 .area h3{font-size:1.13rem;letter-spacing:-.005em;display:flex;align-items:baseline;gap:10px}
 .area h3::before{
@@ -439,6 +466,10 @@ html{scroll-behavior:smooth}
   "slogan": "Abogados institucionales. Asesoría preventiva permanente y defensa contenciosa.",
   "telephone": "+57 312 867 5978",
   "email": "legales.gomez@gmail.com",
+  "contactPoint": [
+    { "@type": "ContactPoint", "telephone": "+57 312 867 5978", "contactType": "customer service", "areaServed": "CO", "availableLanguage": "es" },
+    { "@type": "ContactPoint", "telephone": "+57 316 340 6591", "contactType": "customer service", "areaServed": "CO", "availableLanguage": "es" }
+  ],
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Avenida 30 de Agosto No. 39-83, Oficina 303",
@@ -472,7 +503,8 @@ html{scroll-behavior:smooth}
     "Propiedad intelectual y marcas",
     "Propiedad horizontal (Ley 675 de 2001)",
     "Derecho penal empresarial",
-    "Derecho procesal y litigios"
+    "Derecho procesal y litigios",
+    "Compliance y cumplimiento normativo (SAGRILAFT, PTEE)"
   ],
   "makesOffer": {
     "@type": "Offer",
@@ -497,7 +529,8 @@ html{scroll-behavior:smooth}
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Propiedad intelectual", "description": "Registro y defensa de marcas y signos distintivos ante la Superintendencia de Industria y Comercio, licenciamiento y acuerdos de confidencialidad." } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Propiedad horizontal", "description": "Reglamentos de copropiedad, convivencia, asistencia en asambleas, resolución de conflictos y recuperación de espacios comunes bajo la Ley 675 de 2001." } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Penal empresarial", "description": "Prevención de riesgos penales de la operación, protocolos de cumplimiento y representación de la organización y sus directivos en investigaciones y procesos." } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Procesal y litigios", "description": "Representación como demandante o demandado en todas las instancias, toma de poder en procesos en curso y estrategia probatoria." } }
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Procesal y litigios", "description": "Representación como demandante o demandado en todas las instancias, toma de poder en procesos en curso y estrategia probatoria." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Compliance y cumplimiento normativo", "description": "Programa de transparencia y ética empresarial (PTEE), SAGRILAFT, matriz de riesgos, código de ética, debida diligencia de contrapartes, canal de denuncias, conflictos de interés y protección de datos personales, con auditoría periódica." } }
     ]
   },
   "founder": [
@@ -537,6 +570,7 @@ html{scroll-behavior:smooth}
       <a href="#areas" class="hide-xs">Áreas</a>
       <a href="#consultoria" class="hide-sm">Consultoría</a>
       <a href="#firma" class="hide-sm">La firma</a>
+      <a href="#trayectoria" class="hide-sm">Trayectoria</a>
       <a href="#equipo" class="hide-sm">Equipo</a>
       <a class="btn btn-ghost btn-sm" href="tel:+573128675978">Llamar</a>
       <a class="btn btn-primary btn-sm" href="#agenda">Agendar reunión</a>
@@ -550,7 +584,7 @@ html{scroll-behavior:smooth}
   <section class="hero">
     <div class="wrap">
       <div class="eyebrow label">Firma jurídica · Colombia</div>
-      <h1>Criterio jurídico para decisiones que no admiten ensayo y error.</h1>
+      <h1>Identificamos los riesgos antes de que se conviertan en conflictos.</h1>
       <p class="lead">
         Somos los abogados institucionales de personas naturales y jurídicas, entidades públicas y privadas,
         y propiedades horizontales. Asesoría preventiva permanente, defensa contenciosa cuando hace falta,
@@ -577,7 +611,7 @@ html{scroll-behavior:smooth}
       <div class="sec-body reveal">
         <div class="sec-head">
           <h2>Áreas de práctica</h2>
-          <p>Diez áreas que cubren el giro ordinario de una empresa, una entidad o una copropiedad, cada una a
+          <p>Once áreas que cubren el giro ordinario de una empresa, una entidad o una copropiedad, cada una a
              cargo de un abogado responsable dentro de la firma. No derivamos su asunto a terceros.</p>
         </div>
         <div class="areas">
@@ -620,6 +654,10 @@ html{scroll-behavior:smooth}
           <article class="area">
             <h3>Procesal y litigios</h3>
             <p>Representación como demandante o demandado en todas las instancias, toma de poder en procesos en curso para garantizar una transición ordenada, y estrategia probatoria.</p>
+          </article>
+          <article class="area wide">
+            <h3>Compliance y cumplimiento normativo</h3>
+            <p>Diseñamos e implementamos el sistema de cumplimiento de la organización, no solo el documento que lo describe: programa de transparencia y ética empresarial (PTEE) y SAGRILAFT cuando la Superintendencia de Sociedades los exige, matriz de riesgos por proceso, código de ética, debida diligencia de clientes, proveedores y contrapartes, canal de denuncias y su protocolo de investigación, política de conflictos de interés, y el programa de protección de datos personales con su capacitación al personal. Incluye la auditoría periódica que verifica que lo implementado se esté cumpliendo, y la respuesta ante requerimientos de las superintendencias.</p>
           </article>
         </div>
       </div>
@@ -778,10 +816,78 @@ html{scroll-behavior:smooth}
     </div>
   </section>
 
+
+  <!-- ============ TRAYECTORIA ============ -->
+  <section class="section" id="trayectoria">
+    <div class="wrap sec-grid">
+      <div class="sec-rail"><span class="label">05 · Trayectoria</span></div>
+      <div class="sec-body reveal">
+        <div class="sec-head">
+          <h2>El camino recorrido</h2>
+          <p>No empezamos con usted. La firma acompaña de forma permanente a organizaciones de
+             sectores muy distintos, y esa variedad es deliberada: un régimen disciplinario bien
+             construido para una cadena de droguerías enseña algo que después sirve en una
+             constructora.</p>
+        </div>
+
+        <div class="stats">
+          <div class="stat"><b>22</b><span>Organizaciones acompañadas</span></div>
+          <div class="stat"><b>11</b><span>Áreas de práctica propias</span></div>
+          <div class="stat"><b>7</b><span>Profesionales en la firma</span></div>
+        </div>
+
+        <div class="clientes">
+          <div class="cliente"><b>Gas de Pereira</b><span>Distribución de gas</span></div>
+          <div class="cliente"><b>Celmar Constructora</b><span>Construcción</span></div>
+          <div class="cliente"><b>Ryno Ingeniería S.A.S.</b><span>Ingeniería</span></div>
+          <div class="cliente"><b>Pacho Drogas</b><span>Cadena de droguerías</span></div>
+          <div class="cliente"><b>Droguerías Familiares</b><span>Cadena de droguerías</span></div>
+          <div class="cliente"><b>Pare Publicidad</b><span>Publicidad exterior visual</span></div>
+          <div class="cliente"><b>Prime Contact Group</b><span>Contact center y BPO</span></div>
+          <div class="cliente"><b>Babel Inmobiliaria</b><span>Inmobiliario</span></div>
+          <div class="cliente"><b>Inversiones CT S.A.S.</b><span>Inversiones e inmuebles</span></div>
+          <div class="cliente"><b>La Viña</b><span>Restaurantes y hospitalidad</span></div>
+          <div class="cliente"><b>Sanducheo</b><span>Restaurantes y comida rápida</span></div>
+          <div class="cliente"><b>Mundo Marroquinería</b><span>Manufactura</span></div>
+          <div class="cliente"><b>Piel de Ángel Jeans</b><span>Confección</span></div>
+          <div class="cliente"><b>Comercializadora OM</b><span>Comercialización</span></div>
+          <div class="cliente"><b>Frutos de San Luis</b><span>Comercialización de frutas</span></div>
+          <div class="cliente"><b>Stevan Films</b><span>Producción audiovisual</span></div>
+          <div class="cliente"><b>Paola Ospina Peluquería</b><span>Servicios personales</span></div>
+          <div class="cliente"><b>Delfos</b><span>Servicios empresariales</span></div>
+          <div class="cliente"><b>Casia</b><span>Reorganización societaria</span></div>
+          <div class="cliente"><b>Conjunto Residencial La Parcela P.H.</b><span>Propiedad horizontal</span></div>
+          <div class="cliente"><b>Club Residencial El Nogal</b><span>Propiedad horizontal</span></div>
+          <div class="cliente"><b>Senderos de San Silvestre</b><span>Propiedad horizontal</span></div>
+        </div>
+
+        <div class="trayecto-notas">
+          <article>
+            <h3>En propiedad horizontal, desde adentro</h3>
+            <p>Acompañamos a tres copropiedades. En el Conjunto Residencial La Parcela P.H. la firma
+               no solo asesora: ejerce la administración y la representación legal. Manual de
+               convivencia, convocatorias y actas de asamblea y de consejo, contratación de vigilancia
+               y proveedores, cobro de cuotas de administración e inscripción del administrador ante
+               la Alcaldía. Conocemos la Ley 675 de 2001 desde la silla del administrador, no solo
+               desde la del abogado externo.</p>
+          </article>
+          <article>
+            <h3>Lo que más hemos construido</h3>
+            <p>El grueso del trabajo es laboral del lado del empleador: contratos por cargo,
+               reglamentos internos, cadenas disciplinarias completas, actas de terminación,
+               contratos transaccionales y liquidaciones. Le sigue el frente contractual —
+               arrendamiento, suministro, mandato, obra y representación comercial — y el tributario
+               municipal, donde hemos representado a clientes ante secretarías de hacienda municipales.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ EQUIPO ============ -->
   <section class="section" id="equipo">
     <div class="wrap sec-grid">
-      <div class="sec-rail"><span class="label">05 · Equipo</span></div>
+      <div class="sec-rail"><span class="label">06 · Equipo</span></div>
       <div class="sec-body reveal">
         <div class="sec-head">
           <h2>Quién va a atender su asunto</h2>
@@ -865,7 +971,7 @@ html{scroll-behavior:smooth}
   <!-- ============ AGENDA ============ -->
   <section class="section agenda" id="agenda">
     <div class="wrap sec-grid">
-      <div class="sec-rail"><span class="label">06 · Agenda</span></div>
+      <div class="sec-rail"><span class="label">07 · Agenda</span></div>
       <div class="sec-body reveal">
         <div class="sec-head">
           <h2>Agende su reunión de diagnóstico</h2>
@@ -931,6 +1037,7 @@ html{scroll-behavior:smooth}
                       <option>Propiedad horizontal</option>
                       <option>Penal empresarial</option>
                       <option>Procesal y litigios</option>
+                      <option>Compliance y cumplimiento normativo</option>
                       <option>Otro / no estoy seguro</option>
                     </select>
                   </div>
@@ -990,6 +1097,7 @@ html{scroll-behavior:smooth}
           <a href="mailto:legales.gomez@gmail.com">legales.gomez@gmail.com</a>
           <a id="footWa" href="#">WhatsApp · 312 867 5978</a>
           <a href="tel:+573128675978">Llamar · 312 867 5978</a>
+          <a href="tel:+573163406591">Llamar · 316 340 6591</a>
           <a href="https://www.google.com/maps/search/?api=1&amp;query=Avenida+30+de+Agosto+39-83+Pereira" target="_blank" rel="noopener">Av. 30 de Agosto #39-83, Of. 303 · Pereira</a>
           <a href="#agenda">Atención en toda Colombia</a>
         </div>
