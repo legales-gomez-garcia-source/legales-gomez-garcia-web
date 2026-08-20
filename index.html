@@ -512,6 +512,15 @@ html{scroll-behavior:smooth}
   ]
 }
 </script>
+
+<!-- Google tag (gtag.js) — Google Ads -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18399705653"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18399705653');
+</script>
 </head>
 <body>
 
@@ -1017,6 +1026,28 @@ const CONFIG = {
 };
 /* ========================================================== */
 
+/* ============================================================
+   GOOGLE ADS — MEDICIÓN DE CONVERSIONES
+   Google Ads entrega, por cada conversión, un fragmento así:
+       gtag('event','conversion',{'send_to':'AW-18399705653/AbC-D_efGh12345'});
+   Copie SOLO lo que va después de la barra y péguelo abajo.
+   Mientras estén vacías, la página igual reporta los eventos
+   propios (contacto_whatsapp / agenda_reunion) a la etiqueta.
+   ============================================================ */
+const ADS = {
+  id: "AW-18399705653",
+  etiquetaContacto: "",   // conversión "WhatsApp — contacto"
+  etiquetaAgenda:   ""    // conversión "Agenda — reunión"
+};
+
+function conversion(etiqueta, evento){
+  if (typeof gtag !== "function") return;
+  gtag('event', evento, { transport_type: 'beacon' });
+  if (etiqueta) gtag('event', 'conversion',
+    { send_to: ADS.id + "/" + etiqueta, transport_type: 'beacon' });
+}
+/* ========================================================== */
+
 const MESES = ["enero","febrero","marzo","abril","mayo","junio","julio",
                "agosto","septiembre","octubre","noviembre","diciembre"];
 const DIAS  = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
@@ -1204,6 +1235,7 @@ $("bookForm").addEventListener("submit",e=>{
 *Descripción:*
 ${v("f-msg")||"(No se indicó descripción)"}`;
 
+  conversion(ADS.etiquetaAgenda, 'agenda_reunion');
   window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(texto)}`,"_blank","noopener");
 });
 
@@ -1213,6 +1245,8 @@ $("nextM").addEventListener("click",()=>{cursor=new Date(cursor.getFullYear(),cu
 /* ---- Init ---- */
 $("year").textContent=new Date().getFullYear();
 $("footWa").href=`https://wa.me/${CONFIG.whatsapp}`;
+$("footWa").target="_blank"; $("footWa").rel="noopener";
+$("footWa").addEventListener("click",()=>conversion(ADS.etiquetaContacto,"contacto_whatsapp"));
 pintarCalendario(); pintarHorarios(); pintarProximas();
 
 /* ---- Reveal on scroll ---- */
